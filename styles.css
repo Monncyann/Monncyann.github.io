@@ -96,7 +96,7 @@ a:hover {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 300px minmax(0, 1fr);
+  grid-template-columns: 340px minmax(0, 1fr);
   gap: 56px;
   max-width: 1080px;
   margin: 0 auto;
@@ -106,38 +106,40 @@ a:hover {
 .profile-panel {
   position: sticky;
   top: 96px;
-  padding: 28px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
+  min-height: 330px;
+  padding: 34px 28px;
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  box-shadow:
+    0 10px 34px rgba(43, 51, 55, 0.045),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px) saturate(115%);
 }
 
-.monogram {
-  display: grid;
-  width: 116px;
-  height: 116px;
-  margin-bottom: 24px;
-  place-items: center;
-  border: 1px solid rgba(76, 111, 112, 0.28);
+.profile-photo {
+  display: block;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 30px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.72);
   border-radius: 50%;
-  background: #f2eee7;
-  color: var(--accent-dark);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 34px;
-  font-weight: 700;
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 10px 28px rgba(43, 51, 55, 0.08);
+  object-fit: cover;
+  object-position: center center;
 }
 
 .profile-panel h1 {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 31px;
+  font-size: clamp(22px, 2.3vw, 26px);
   line-height: 1.16;
+  white-space: nowrap;
 }
 
 .profile-panel h1 span {
-  display: block;
-  margin-top: 4px;
-  font-size: 22px;
+  font-size: clamp(17px, 1.8vw, 20px);
   font-weight: 500;
 }
 
@@ -147,7 +149,6 @@ a:hover {
   color: var(--muted);
 }
 
-.profile-links,
 .contact-links,
 .pub-links {
   display: flex;
@@ -155,11 +156,6 @@ a:hover {
   gap: 12px;
 }
 
-.profile-links {
-  margin-top: 26px;
-}
-
-.profile-links a,
 .contact-links a,
 .pub-links a {
   padding: 6px 10px;
@@ -170,7 +166,6 @@ a:hover {
   text-decoration: none;
 }
 
-.profile-links a:hover,
 .contact-links a:hover,
 .pub-links a:hover {
   border-color: rgba(167, 111, 68, 0.55);
@@ -194,7 +189,7 @@ a:hover {
   max-width: 760px;
   margin: 0 0 24px;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 48px;
+  font-size: 26px;
   line-height: 1.08;
   font-weight: 600;
 }
@@ -202,6 +197,112 @@ a:hover {
 p {
   max-width: 760px;
   margin: 0 0 14px;
+}
+
+.about-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.about-links a {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(76, 111, 112, 0.3);
+  border-radius: 50%;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.62),
+      rgba(255, 255, 255, 0.18)
+    );
+  box-shadow:
+    0 12px 28px rgba(43, 51, 55, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  color: var(--accent-dark);
+  text-decoration: none;
+  backdrop-filter: blur(16px) saturate(130%);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease;
+}
+
+.about-links a span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  display: block;
+  margin: 0;
+  transition:
+    width 300ms ease,
+    height 300ms ease,
+    margin 300ms ease;
+}
+
+.about-links .scholar-link span {
+  background: #4285f4;
+}
+
+.about-links .github-link span {
+  background: #24292f;
+}
+
+.about-links .email-link span {
+  background: #a76f44;
+}
+
+.about-links i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  color: var(--accent-dark);
+  font-size: 24px;
+  line-height: 1;
+  transform: translate(-50%, -50%);
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.about-links .scholar-link i {
+  color: #4285f4;
+}
+
+.about-links .github-link i {
+  color: #24292f;
+}
+
+.about-links .email-link i {
+  color: #a76f44;
+}
+
+.about-links a:hover {
+  border-color: transparent;
+  box-shadow:
+    0 16px 34px rgba(43, 51, 55, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82);
+  transform: translateY(-2px);
+}
+
+.about-links a:hover i {
+  color: #ffffff;
+  transform: translate(-50%, -50%) rotate(-5deg) scale(1.08);
+}
+
+.about-links a:hover span {
+  width: 46px;
+  height: 46px;
+  margin: -23px 0 0 -23px;
 }
 
 .section-inner {
@@ -309,7 +410,7 @@ h3 {
   }
 
   .hero-copy h2 {
-    font-size: 34px;
+    font-size: 25px;
   }
 
   .section-inner {
